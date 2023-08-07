@@ -1,6 +1,8 @@
-package com.phq.entity;
+package com.phq.domain.entity;
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,8 +12,8 @@ import lombok.Data;
  * @since 2023-08-07 01:05:42
  */
 
-@SuppressWarnings("serial")
 @Data
+@TableName("article")
 public class Article {
     
     private Integer artId;

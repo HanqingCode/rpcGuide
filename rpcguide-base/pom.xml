@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>rpcguide-base</artifactId>
+	<packaging>jar</packaging>
 
 
 	<dependencies>

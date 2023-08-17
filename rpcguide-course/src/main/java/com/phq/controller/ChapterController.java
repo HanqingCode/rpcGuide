@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * (Chapter)表控制层
+ * (ChapterList)表控制层
  *
- * @author makejava
+ * @author phq
  * @since 2023-08-07 22:14:01
  */
 @RestController
 @RequestMapping("/chapter")
 public class ChapterController {
     /**
-     * 服务对象
+     * 服务对象 chapterService
      */
     @Autowired
     private ChapterService chapterService;
 
     /**
-     * 查询所有数据
+     * 查询所有数据 test
      *
      * @return 所有数据
      */
@@ -35,6 +35,12 @@ public class ChapterController {
         return chapterService.list();
     }
 
+
+    /**
+     * 查询所有数据 query all chapters
+     *
+     * @return 所有数据
+     */
     @GetMapping("/list")
     public ResponseResult chapterList(){
         //查询所有章节 封装成ResponseResult返回

@@ -5,7 +5,7 @@ import com.phq.domain.entity.Chapter;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * (Chapter)表数据库访问层
+ * (ChapterList)表数据库访问层
  *
  * @author makejava
  * @since 2023-08-07 22:14:02

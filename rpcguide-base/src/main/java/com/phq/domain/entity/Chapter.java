@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * (Chapter)表实体类
+ * (ChapterList)表实体类
  *
  * @author makejava
  * @since 2023-08-07 22:14:02

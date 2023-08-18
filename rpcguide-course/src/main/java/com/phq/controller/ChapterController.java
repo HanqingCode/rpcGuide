@@ -37,7 +37,7 @@ public class ChapterController {
 
 
     /**
-     * 查询所有数据 query all chapters
+     * 查询所有章节 query all chapters
      *
      * @return 所有数据
      */
@@ -46,6 +46,18 @@ public class ChapterController {
         //查询所有章节 封装成ResponseResult返回
         ResponseResult result =  chapterService.chapterList();
         return result;
+    }
+
+    /**
+     * 查询某个章节的详细内容，包括章节的文章、视频、资源
+     * query chapter's detail
+     *
+     * @return 所有数据
+     */
+    @GetMapping("/{id}")
+    public ResponseResult getChapterDetail(@PathVariable("id") String id){
+        return chapterService.getChapterDetail(id);
+
     }
 
 }

@@ -14,5 +14,7 @@ public interface ChapterService extends IService<Chapter> {
 
     ResponseResult chapterList();
 
+    ResponseResult getChapterDetail(String id);
+
 }
 

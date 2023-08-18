@@ -4,22 +4,22 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * (Article)表实体类
+ * (Resource)表实体类
  *
  * @author makejava
- * @since 2023-08-17 19:36:59
+ * @since 2023-08-18 19:59:21
  */
 @Data
-@TableName("article")
-public class Article {
+@TableName("resource")
+public class Resource {
     
-    private Integer artId;
+    private Integer rscId;
     
     private Integer chId;
     
-    private String artName;
+    private String rscName;
     
-    private String artPath;
+    private String rscPath;
 
 
 }

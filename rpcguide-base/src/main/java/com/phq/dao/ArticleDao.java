@@ -5,10 +5,13 @@ import com.phq.domain.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author: phq
- * @date: 2023/8/7
+ * (Article)表数据库访问层
+ *
+ * @author makejava
+ * @since 2023-08-17 19:36:53
  */
-
 @Mapper
-public interface ArticleMapper extends BaseMapper<Article> {
+public interface ArticleDao extends BaseMapper<Article> {
+
 }
+

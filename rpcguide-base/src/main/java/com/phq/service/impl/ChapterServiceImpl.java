@@ -1,7 +1,6 @@
 package com.phq.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.phq.dao.ChapterDao;
 import com.phq.domain.ResponseResult;
@@ -16,7 +15,6 @@ import com.phq.service.ChapterService;
 import com.phq.service.ResourceService;
 import com.phq.service.VideoService;
 import com.phq.utils.BeanCopyUtils;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,18 +50,16 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterDao, Chapter> impleme
     public ResponseResult chapterList() {
         //查询所有章节 封装成ResponseResult返回
         LambdaQueryWrapper<Chapter> queryWrapper = new LambdaQueryWrapper<>();
-        // 按照序号进行排序
+        //按照序号进行排序
         queryWrapper.orderByAsc(Chapter::getChId);
         //查询所有章节
-        Page<Chapter> page = new Page<>(1,50);
-        page(page,queryWrapper);
-        List<Chapter> chapters = page.getRecords();
-        //List<ChapterList> chapters = baseMapper.selectList(queryWrapper);
+        List<Chapter> chapters = list(queryWrapper);
         //把chapter类拷贝成chapterListVo类
         List<ChapterListVo> chaptersVo = BeanCopyUtils.copyBeanList(chapters, ChapterListVo.class);
         //封装成ResponseResult返回
         return ResponseResult.okResult(chaptersVo);
     }
+
 
     /**
      * 查询某个章节的详细内容，包括章节的文章、视频、资源

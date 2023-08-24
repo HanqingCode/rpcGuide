@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * (ChapterList)表控制层
+ * (Chapter)表控制层
  *
  * @author phq
  * @since 2023-08-07 22:14:01

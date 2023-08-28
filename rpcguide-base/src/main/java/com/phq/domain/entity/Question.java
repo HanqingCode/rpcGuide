@@ -24,7 +24,7 @@ public class Question {
     
     private Integer numOfOpt;
     
-    private Integer correctOpt;
+    private String correctOpt;
     
     private String explanation;
     

@@ -2,7 +2,10 @@ package com.phq.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.phq.dao.ArticleDao;
 import com.phq.dao.ChapterDao;
+import com.phq.dao.ResourceDao;
+import com.phq.dao.VideoDao;
 import com.phq.domain.ResponseResult;
 import com.phq.domain.entity.Article;
 import com.phq.domain.entity.Chapter;
@@ -10,10 +13,7 @@ import com.phq.domain.entity.Resource;
 import com.phq.domain.entity.Video;
 import com.phq.domain.vo.ChapterDetailVo;
 import com.phq.domain.vo.ChapterListVo;
-import com.phq.service.ArticleService;
 import com.phq.service.ChapterService;
-import com.phq.service.ResourceService;
-import com.phq.service.VideoService;
 import com.phq.utils.BeanCopyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,11 +33,12 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterDao, Chapter> impleme
     @Autowired
     private ChapterService chapterService;
     @Autowired
-    private ArticleService articleService;
+    private ArticleDao articleDao;
     @Autowired
-    private VideoService videoService;
+    private VideoDao videoDao;
     @Autowired
-    private ResourceService resourceService;
+    private ResourceDao resourceDao;
+
 
 
 
@@ -76,22 +77,24 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterDao, Chapter> impleme
         //根据chid查询对应的文章article
         LambdaQueryWrapper<Article> articleWrapper = new LambdaQueryWrapper<>();
         articleWrapper.eq(Article::getChId, id);
-        Article article = articleService.getOne(articleWrapper);
+        Article article = articleDao.selectOne(articleWrapper);
         //根据chid查询对应的视频video
         LambdaQueryWrapper<Video> videoWrapper = new LambdaQueryWrapper<>();
         videoWrapper.eq(Video::getChId, id);
-        Video video = videoService.getOne(videoWrapper);
+        Video video = videoDao.selectOne(videoWrapper);
         //根据chid查询对应的资源resources
         LambdaQueryWrapper<Resource> resourceWrapper = new LambdaQueryWrapper<>();
         resourceWrapper.eq(Resource::getChId, id);
-        Resource resource = resourceService.getOne(resourceWrapper);
+        Resource resource = resourceDao.selectOne(resourceWrapper);
 
         //转换成vo
         ChapterDetailVo chapterDetailVo = BeanCopyUtils.copyBean(chapter, ChapterDetailVo.class);
         chapterDetailVo.setArtPath(article.getArtPath());
         chapterDetailVo.setVidPath(video.getVidPath());
         chapterDetailVo.setRscPaths(new ArrayList<>());
-        chapterDetailVo.getRscPaths().add(resource.getRscPath());
+        if (resource != null) {
+            chapterDetailVo.getRscPaths().add(resource.getRscPath());
+        }
 
         //封装成响应返回
         return ResponseResult.okResult(chapterDetailVo);

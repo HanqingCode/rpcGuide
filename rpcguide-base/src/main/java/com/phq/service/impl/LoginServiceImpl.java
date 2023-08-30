@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -54,10 +55,23 @@ public class LoginServiceImpl implements LoginService {
         //把uid和loginUserDetails存入redis
         redisCache.setCacheObject("login:"+uid, loginUserDetails);
         //把token和user转换成LoginVo
-        LoginUserVo loginUserVo = BeanCopyUtils.copyBean(loginUserDetails, LoginUserVo.class);
+        LoginUserVo loginUserVo = BeanCopyUtils.copyBean(loginUserDetails.getUser(), LoginUserVo.class);
         LoginVo loginVo = new LoginVo(jwt, loginUserVo);
 
         //封装成ResponseResult返回
         return ResponseResult.okResult(loginVo);
+    }
+
+    @Override
+    public ResponseResult logout() {
+        //获取token 解析获取userid
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUserDetails loginUserDetails = (LoginUserDetails) authentication.getPrincipal();
+        //获取userid
+        Integer uId = loginUserDetails.getUser().getUId();
+        //删除redis中的用户信息
+        redisCache.deleteObject("login:" + uId);
+
+        return ResponseResult.okResult();
     }
 }

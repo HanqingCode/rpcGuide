@@ -1,6 +1,8 @@
 package com.phq.domain.entity;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -13,7 +15,7 @@ import lombok.Data;
 @Data
 @TableName("user")
 public class User {
-    
+    @TableId
     private Integer uId;
     
     private Integer isAdmin;
@@ -25,6 +27,8 @@ public class User {
     private String phone;
     
     private String email;
+
+    private String picture;
     
     private Date createdAt;
     

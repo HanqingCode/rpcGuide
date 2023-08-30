@@ -1,6 +1,8 @@
 package com.phq.domain.entity;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -13,7 +15,7 @@ import lombok.Data;
 @Data
 @TableName("test")
 public class Test {
-    
+    @TableId
     private Integer testId;
     
     private Integer chId;

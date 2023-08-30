@@ -2,6 +2,7 @@ package com.phq.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.phq.domain.ResponseResult;
+import com.phq.domain.dto.AddUserTestDto;
 import com.phq.domain.entity.Test;
 
 /**
@@ -13,5 +14,7 @@ import com.phq.domain.entity.Test;
 public interface TestService extends IService<Test> {
 
     ResponseResult testList(String id);
+
+    ResponseResult addUserTestRecord(AddUserTestDto addUserTestDto);
 }
 

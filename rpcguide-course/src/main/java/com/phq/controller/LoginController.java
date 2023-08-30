@@ -30,6 +30,16 @@ public class LoginController {
         return loginService.login(user);
     }
 
+    /**
+     * 用户登陆
+     * login
+     * @return
+     */
+    @PostMapping("/logout")
+    public ResponseResult logout(){
+        return loginService.logout();
+    }
+
 
 
 

@@ -30,6 +30,22 @@ public class BeanCopyUtils {
         return result;
     }
 
+    public static <V> V copyBeanTwo(Object source, Object source2, Class<V> clazz) {
+        //创建目标对象
+        V result;
+        try {
+            result = clazz.newInstance();
+            //实现属性copy
+            BeanUtils.copyProperties(source, result);
+            BeanUtils.copyProperties(source2, result);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        //返回结果
+        return result;
+    }
+
     public static <O,V> List<V> copyBeanList(List<O> list, Class<V> clazz){
         return list.stream()
                 .map(o -> copyBean(o,clazz))

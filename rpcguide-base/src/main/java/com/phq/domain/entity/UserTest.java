@@ -2,29 +2,30 @@ package com.phq.domain.entity;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * (Comment)表实体类
+ * (UserTest)表实体类
  *
  * @author makejava
- * @since 2023-08-24 18:39:44
+ * @since 2023-08-30 01:33:06
  */
 @Data
-@TableName("comment")
-public class Comment {
+@TableName("user_test")
+public class UserTest {
     @TableId
-    private Integer cmmtId;
-    
-    private Integer chId;
+    private Integer utestId;
     
     private Integer uId;
     
-    private String content;
+    private Integer testId;
     
-    private Integer parentCommt;
+    private Integer score;
+    
+    private JSON result;
     
     private Date createdAt;
     

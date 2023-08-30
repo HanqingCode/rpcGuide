@@ -5,20 +5,22 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * (QuestionOption)表实体类
+ * (UserQuestion)表实体类
  *
  * @author makejava
- * @since 2023-08-28 23:20:26
+ * @since 2023-08-30 01:35:07
  */
 @Data
-@TableName("question_option")
-public class QuestionOption {
+@TableName("user_question")
+public class UserQuestion {
     @TableId
-    private Integer optId;
+    private Integer utestId;
     
     private Integer queId;
     
-    private String content;
+    private String answerOpt;
+    
+    private Integer isCorrect;
 
 
 }

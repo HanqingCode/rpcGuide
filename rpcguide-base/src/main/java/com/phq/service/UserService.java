@@ -1,6 +1,7 @@
 package com.phq.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.phq.domain.ResponseResult;
 import com.phq.domain.entity.User;
 
 /**
@@ -11,5 +12,8 @@ import com.phq.domain.entity.User;
  */
 public interface UserService extends IService<User> {
 
+    ResponseResult userProfile();
+
+    ResponseResult userProgress();
 }
 

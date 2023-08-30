@@ -18,5 +18,7 @@ public class LoginUserVo {
 
     private String email;
 
+    private String picture;
+
 
 }

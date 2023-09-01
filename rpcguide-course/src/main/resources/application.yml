@@ -11,8 +11,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_rpcguide?characterEncoding=utf-8 #?useSSL=false?serverTimezone=UTC?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 1234
+    username: root #需要修改
+    password: 12345678 #需要修改
 
   servlet:
   multipart:
